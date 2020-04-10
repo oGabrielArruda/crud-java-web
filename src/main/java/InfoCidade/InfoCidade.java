@@ -2,8 +2,10 @@ package InfoCidade;
 
 public class InfoCidade implements Cloneable
 {
-    public String area_km2;
-    public String codigo_ibge;
+    protected String area_km2;
+    protected String codigo_ibge;
+
+    public InfoCidade(){}
 
     public void setArea_km2(String area_km2) throws  Exception
     {

@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e51d90d4-dcd5-4bd0-93bc-e948ab3b804e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/InfoCidade/InfoEstado/InfoEstado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crud-java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/crud-java.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/InfoCidade/InfoCidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/InfoCidade/InfoCidade.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,10 +41,24 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="crud-java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -64,17 +82,29 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="306" y="84" key="#Project_Structure/0.0.1440.860@0.0.1440.860" timestamp="1586518592151" />
+    <state x="174" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586525784496">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="174" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860@0.0.1440.860" timestamp="1586525784496" />
     <state x="0" y="238" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1586518693438">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="0" y="238" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1440.860@0.0.1440.860" timestamp="1586518693438" />
-    <state x="276" y="139" key="SettingsEditor" timestamp="1586519868086">
+    <state x="415" y="355" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1586525565960">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="276" y="139" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1586519868086" />
+    <state x="415" y="355" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1440.860@0.0.1440.860" timestamp="1586525565960" />
+    <state x="128" y="9" key="SettingsEditor" timestamp="1586526114987">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="128" y="9" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1586526114987" />
     <state x="330" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1586518571135">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="330" y="218" key="com.intellij.ide.util.TipDialog/0.0.1440.860@0.0.1440.860" timestamp="1586518571135" />
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1586525408634">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860@0.0.1440.860" timestamp="1586525408634" />
   </component>
 </project>
