@@ -73,7 +73,7 @@ public class InfoCidade implements Cloneable
         this.area_km2 = modelo.codigo_ibge;
     }
 
-    public InfoCidade clone()
+    public Object clone()
     {
         InfoCidade ret = null;
         try

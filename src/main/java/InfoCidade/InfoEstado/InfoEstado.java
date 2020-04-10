@@ -74,7 +74,7 @@ public class InfoEstado extends InfoCidade implements Cloneable
     }
 
     @Override
-    public InfoEstado clone()
+    public Object clone()
     {
         InfoEstado ret = null;
         try
