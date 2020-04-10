@@ -1,6 +1,7 @@
 package InfoCidade;
 
-public class InfoCidade implements Cloneable{
+public class InfoCidade implements Cloneable
+{
     public String area_km2;
     public String codigo_ibge;
 
@@ -26,5 +27,59 @@ public class InfoCidade implements Cloneable{
     public String getCodigo_ibge()
     {
         return this.codigo_ibge;
+    }
+
+    public boolean equals(Object obj)
+    {
+        if(obj == null)
+            return false;
+        if(obj.getClass() != this.getClass())
+            return false;
+        if(this == obj)
+            return true;
+        InfoCidade outraInfoCidade = (InfoCidade) obj;
+        if(!this.codigo_ibge.equals(outraInfoCidade.codigo_ibge))
+            return false;
+        if(!this.area_km2.equals(outraInfoCidade.area_km2))
+            return false;
+        return true;
+    }
+
+    public String toString()
+    {
+        String ret = "";
+        ret += "Area km2: " + this.area_km2 + "\n";
+        ret += "Codigo Ibge " + this.codigo_ibge;
+        return ret;
+    }
+
+    public int hashCode()
+    {
+        int ret = 135;
+        ret = ret * 17 + this.codigo_ibge.hashCode();
+        ret = ret * 17 + this.area_km2.hashCode();
+        if (ret < 0)
+            ret = -ret;
+        return ret;
+    }
+
+    public InfoCidade(InfoCidade modelo) throws Exception
+    {
+        if(modelo == null)
+            throw new Exception("Modelo nulo");
+        this.codigo_ibge = modelo.codigo_ibge;
+        this.area_km2 = modelo.codigo_ibge;
+    }
+
+    public InfoCidade clone()
+    {
+        InfoCidade ret = null;
+        try
+        {
+            ret = new InfoCidade(this);
+        }
+        catch (Exception ex)
+        { }
+        return ret;
     }
 }
