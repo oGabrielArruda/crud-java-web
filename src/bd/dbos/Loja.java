@@ -1,8 +1,8 @@
 package bd.dbos;
 
 public class Loja implements Cloneable {
-    private int codigo, qtdFuncionarios;
-    private String nome, endereco, telefone, categoria;
+    private int codigo, cep, numero, qtdFuncionarios;
+    private String nome, complemento, telefone, categoria;
 
     /**
      * Construtor vazio.
@@ -17,20 +17,24 @@ public class Loja implements Cloneable {
      * 
      * @param codigo          código da loja
      * @param nome            nome da loja
-     * @param endereco        endereço da da loja
+     * @param cep             cep da loja
+     * @param numero          numero da loja
+     * @param complemento     complemento da loja
      * @param telefone        telefone da loja
      * @param categoria       categoria da loja
      * @param qtdFuncionarios quantidade de funcionários da loja
      * @throws Exception caso algum valor seja inválido
      */
-    public Loja(int codigo, String nome, String endereco, String telefone, String categoria, int qtdFuncionarios)
-            throws Exception {
+    public Loja(int codigo, String nome, int cep, int numero, String complemento, String telefone, String categoria,
+            int qtdFuncionarios) throws Exception {
         this.setCodigo(codigo);
         this.setNome(nome);
-        this.setCpf(cpf);
-        this.setEmail(email);
+        this.setCep(cep);
+        this.setNumero(numero);
+        this.setComplemento(complemento);
         this.setTelefone(telefone);
-        this.setSenha(senha);
+        this.setCategoria(categoria);
+        this.setQtdFuncionarios(qtdFuncionarios);
     }
 
     /**
@@ -52,12 +56,30 @@ public class Loja implements Cloneable {
     }
 
     /**
-     * Pega o valor do atributo Endereco
+     * Pega o valor do atributo cep
      * 
-     * @return o endereço da respectiva loja
+     * @return o cep da respectiva loja
      */
-    public String getEndereco() {
-        return this.endereco;
+    public Int getCep() {
+        return this.cep;
+    }
+
+    /**
+     * Pega o valor do atributo numero
+     * 
+     * @return o numero da respectiva loja
+     */
+    public Int getNumero() {
+        return this.numero;
+    }
+
+    /**
+     * Pega o valor do atributo complemento
+     * 
+     * @return o complemento da respectiva loja
+     */
+    public String getComplemento() {
+        return this.complemento;
     }
 
     /**
@@ -114,15 +136,30 @@ public class Loja implements Cloneable {
     }
 
     /**
-     * Seta o valor do atributo endereco
      * 
-     * @param endereco o endereco da loja desejada
-     * @throws Exception caso a string endereco seja nula
+     * @param cep o cep da loja desejada
+     * @throws Exception caso o cep seja inválido
      */
-    public void setEmail(String endereco) throws Exception {
-        if (endereco == null)
-            throw new Exception("Endereco inválido!");
-        this.endereco = endereco;
+    public void setCep(int cep) throws Exception {
+        if (cep < 10000000 || cep > 1999999)
+            throw new Exception("Cep inválido!");
+        this.cep = cep;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    /**
+     * Seta o valor do atributo complemento
+     * 
+     * @param complemento o complemento da loja desejada
+     * @throws Exception caso a string complemento seja nula
+     */
+    public void setComplemento(String complemento) throws Exception {
+        if (complemento == null)
+            throw new Exception("complemento inválido!");
+        this.complemento = complemento;
     }
 
     /**
@@ -165,7 +202,9 @@ public class Loja implements Cloneable {
         int ret = 23;
         ret = ret * 7 + Integer.valueOf(this.codigo).hashCode();
         ret = ret * 7 + new String(this.nome).hashCode();
-        ret = ret * 7 + new String(this.endereco).hashCode();
+        ret = ret * 7 + Integer.valueOf(this.cep).hashcode();
+        ret = ret * 7 + Integer.valueOf(this.numero).hashCode();
+        ret = ret * 7 + new String(this.complemento).hashCode();
         ret = ret * 7 + new String(this.telefone).hashCode();
         ret = ret * 7 + new String(this.categoria).hashCode();
         ret = ret * 7 + Integer.valueOf(this.qtdFuncionarios).hashCode();
@@ -182,7 +221,9 @@ public class Loja implements Cloneable {
         String ret = "";
         ret += "Código:" + this.codigo + "/n";
         ret += "Nome:" + this.nome + "/n";
-        ret += "Endereço:" + this.endereco + "/n";
+        ret += "Cep:" + this.cep + "/n";
+        ret += "Numero" + this.numero + "/n";
+        ret += "Complemento:" + this.complemento + "/n";
         ret += "Telefone:" + this.telefone + "/n";
         ret += "Categoria:" + this.categoria + "/n";
         ret += "Quantidade de funcionários:" + this.qtdFuncionarios + "/n";
@@ -206,7 +247,11 @@ public class Loja implements Cloneable {
             return false;
         if (!(this.nome.equals(loja.nome)))
             return false;
-        if (!(this.endereco.equals(loja.endereco)))
+        if (this.cep != loja.cep)
+            return false;
+        if (this.numero != loja.numero)
+            return false;
+        if (!(this.complemento.equals(loja.complemento)))
             return false;
         if (!(this.telefone.equals(loja.telefone)))
             return false;
@@ -225,7 +270,9 @@ public class Loja implements Cloneable {
     public loja(loja modelo) {
         this.codigo = modelo.codigo;
         this.nome = modelo.nome;
-        this.endereco = modelo.endereco;
+        this.cep = modelo.cep;
+        this.numero = modelo.numero;
+        this.complemento = modelo.complemento;
         this.telefone = modelo.telefone;
         this.categoria = modelo.categoria;
         this.qtdFuncionarios = modelo.qtdFuncionarios;
