@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e51d90d4-dcd5-4bd0-93bc-e948ab3b804e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bd/BDSQLServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bd/BDSQLServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bd/core/MeuPreparedStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bd/core/MeuPreparedStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bd/core/MeuResultSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bd/core/MeuResultSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bd/core/MeuStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bd/core/MeuStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bd/daos/Loja.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bd/dbos/Loja.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bd/dbos/Loja.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Janelas/JanelaCrud.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Janelas/JanelaCrud.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Janelas/JanelaCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Janelas/JanelaCrud.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +49,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gabri\Desktop\crud-java\src\main\java" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">

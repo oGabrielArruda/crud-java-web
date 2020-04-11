@@ -2,7 +2,7 @@ package bd.dbos;
 
 public class Loja implements Cloneable {
     private int codigo, qtdFuncionarios;
-    private String nome, endereco, telefone, categoria;
+    private String nome, endereco, telefone, categoria, cep, numero, complemento;
 
     /**
      * Construtor vazio.
@@ -23,11 +23,11 @@ public class Loja implements Cloneable {
      * @param qtdFuncionarios quantidade de funcionários da loja
      * @throws Exception caso algum valor seja inválido
      */
-    public Loja(int codigo, String nome, String endereco, String telefone, String categoria, int qtdFuncionarios)
+    public Loja(int codigo, String nome, String cep, String telefone, String categoria, int qtdFuncionarios)
             throws Exception {
         this.setCodigo(codigo);
         this.setNome(nome);
-        this.setCpf(cpf);
+        this.setCep(cep);
         this.setEmail(email);
         this.setTelefone(telefone);
         this.setSenha(senha);
@@ -201,7 +201,7 @@ public class Loja implements Cloneable {
         if (!(obj instanceof Loja))
             return false;
 
-        Loja loja = (loja) obj;
+        Loja loja = (Loja) obj;
         if (this.codigo != loja.codigo)
             return false;
         if (!(this.nome.equals(loja.nome)))
@@ -222,7 +222,7 @@ public class Loja implements Cloneable {
      * 
      * @param modelo a instância que será copiada.
      */
-    public loja(loja modelo) {
+    public Loja(Loja modelo) {
         this.codigo = modelo.codigo;
         this.nome = modelo.nome;
         this.endereco = modelo.endereco;
@@ -235,9 +235,9 @@ public class Loja implements Cloneable {
      * Clona a instância.
      */
     public Object clone() {
-        loja ret = null;
+        Loja ret = null;
         try {
-            ret = new loja(this);
+            ret = new Loja(this);
         } catch (Exception ex) {
         }
 

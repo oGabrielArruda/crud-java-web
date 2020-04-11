@@ -6,10 +6,10 @@ import bd.*;
 import bd.core.*;
 import bd.dbos.*;
 
-public class Loja {
+public class Lojas {
     /**
      * Método que confere se a loja está cadastrada
-     * 
+     *
      * @param codigo é o código da loja que será procurada
      * @return se a loja está cadastrado
      * @throws Exception se ocorrer algum erro na procura
@@ -31,7 +31,7 @@ public class Loja {
     }
 
     /**
-     * 
+     *
      * @param codLoja é o código da loja que será selecionada
      * @return a loja selecionada
      * @throws Exception se ocorrer algum erro na procura
@@ -60,14 +60,14 @@ public class Loja {
 
     /**
      * Método que inclui uma nova loja
-     * 
+     *
      * @param loja objeto da classe Loja que será incluido
      * @throws Exception se o objeto dado for inválidos
      */
     public static void incluir(Loja loja) throws Exception {
         if (loja == null)
             throw new Exception("Valores não fornecidos");
-        if (Loja.cadastrado(loja.getCodigo()))
+        if (Lojas.cadastrado(loja.getCodigo()))
             throw new Exception("Loja já cadastrada");
         try {
             String sql;
@@ -89,7 +89,7 @@ public class Loja {
 
     /**
      * Método que altera as informações de uma Loja já inserida
-     * 
+     *
      * @param loja objeto da classe loja que será alterada
      * @throws Exception se o objeto for inválido ou se ocorrer erros na conexão
      */
@@ -117,7 +117,7 @@ public class Loja {
     }
 
     /**
-     * 
+     *
      * @param codLoja é o código da loja que será deletada
      * @throws Exception se ocorrer algum erro durante a exclusão
      */
@@ -137,7 +137,7 @@ public class Loja {
 
     /**
      * Método que retorna uma Loja.
-     * 
+     *
      * @param codigo é o código da Loja a ser retornado
      * @return o objeto da Loja do respectivo código
      * @throws Exception se a Loja não estiver cadastrada, ou problemas no bd
