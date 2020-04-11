@@ -86,6 +86,52 @@ public class JanelaCrud extends JFrame{
                     fetchCep(txtCep.getText());
             }
         });
+
+        inserirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try
+                {
+                    inserirLoja();
+                    JOptionPane.showMessageDialog(rootPanel, "Inserido com sucesso!");
+                }
+                catch (Exception ex){
+                    JOptionPane.showMessageDialog(rootPanel, ex.getMessage());
+                }
+            }
+        });
+
+        alterarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try
+                {
+                    alterarLoja(Integer.parseInt(txtCodigo.getText()));
+                    JOptionPane.showMessageDialog(rootPanel, "Alterado com sucesso");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(rootPanel, ex.getMessage());
+                }
+            }
+        });
+    }
+
+    private Loja newLojaInstance() throws Exception
+    {
+        return  new Loja(txtNome.getText(), Integer.parseInt(txtCep.getText()), Integer.parseInt(txtNumero.getText()), txtComplemento.getText(),
+                txtTelefone.getText(), txtCategoria.getText(), Integer.parseInt(txtQtdFunc.getText()));
+    }
+
+    private void alterarLoja(int cod) throws Exception
+    {
+        Loja loja = newLojaInstance();
+        loja.setCodigo(cod);
+        Lojas.alterar(loja);
+    }
+
+    private void inserirLoja() throws Exception
+    {
+        Loja loja = newLojaInstance();
+        Lojas.incluir(loja);
     }
 
     private void fetchCep(String cep)
@@ -96,6 +142,7 @@ public class JanelaCrud extends JFrame{
         }
         catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPanel, "Cep inválido");
+            txtCep.setText("");
         }
 
     }

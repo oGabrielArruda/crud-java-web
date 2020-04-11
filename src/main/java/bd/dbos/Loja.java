@@ -14,8 +14,7 @@ public class Loja implements Cloneable {
     /**
      * Construtor da classe loja. Recebe os respectivos parâmetros e chama os
      * métodos que setam os valores.
-     * 
-     * @param codigo          código da loja
+     *
      * @param nome            nome da loja
      * @param cep             cep da loja
      * @param numero          numero da loja
@@ -28,6 +27,17 @@ public class Loja implements Cloneable {
     public Loja(int codigo, String nome, int cep, int numero, String complemento, String telefone, String categoria,
             int qtdFuncionarios) throws Exception {
         this.setCodigo(codigo);
+        this.setNome(nome);
+        this.setCep(cep);
+        this.setNumero(numero);
+        this.setComplemento(complemento);
+        this.setTelefone(telefone);
+        this.setCategoria(categoria);
+        this.setQtdFuncionarios(qtdFuncionarios);
+    }
+
+    public Loja(String nome, int cep, int numero, String complemento, String telefone, String categoria,
+                int qtdFuncionarios) throws Exception {
         this.setNome(nome);
         this.setCep(cep);
         this.setNumero(numero);
@@ -130,7 +140,7 @@ public class Loja implements Cloneable {
      * @throws Exception caso a string nome seja nula
      */
     public void setNome(String nome) throws Exception {
-        if (nome == null)
+        if (nome == null || nome.length() == 0)
             throw new Exception("Nome inválido!");
         this.nome = nome;
     }
@@ -169,7 +179,7 @@ public class Loja implements Cloneable {
      * @throws Exception caso a string telefone seja nula
      */
     public void setTelefone(String telefone) throws Exception {
-        if (telefone == null)
+        if (telefone == null || telefone.length() == 0)
             throw new Exception("Telefone inválido!");
         this.telefone = telefone;
     }
@@ -181,7 +191,7 @@ public class Loja implements Cloneable {
      * @throws Exception caso a string categoria seja nula
      */
     public void setCategoria(String categoria) throws Exception {
-        if (categoria == null)
+        if (categoria == null || categoria.length() == 0)
             throw new Exception("Categoria inválida!");
         this.categoria = categoria;
     }

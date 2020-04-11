@@ -103,14 +103,14 @@ public class Lojas {
             sql = "update Loja set nome= ?, cep = ?, numero = ?, complemento = ?,telefone = ?, categoria = ?, qtdFuncionarios = ? where codLoja = ?";
 
             BDSQLServer.COMANDO.prepareStatement(sql);
-            BDSQLServer.COMANDO.setInt(1, loja.getCodigo());
-            BDSQLServer.COMANDO.setString(2, loja.getNome());
-            BDSQLServer.COMANDO.setInt(3, loja.getCep());
-            BDSQLServer.COMANDO.setInt(4, loja.getNumero());
-            BDSQLServer.COMANDO.setString(5, loja.getComplemento());
-            BDSQLServer.COMANDO.setString(6, loja.getTelefone());
-            BDSQLServer.COMANDO.setString(7, loja.getCategoria());
-            BDSQLServer.COMANDO.setInt(8, loja.getQtdFuncionarios());
+            BDSQLServer.COMANDO.setString(1, loja.getNome());
+            BDSQLServer.COMANDO.setInt(2, loja.getCep());
+            BDSQLServer.COMANDO.setInt(3, loja.getNumero());
+            BDSQLServer.COMANDO.setString(4, loja.getComplemento());
+            BDSQLServer.COMANDO.setString(5, loja.getTelefone());
+            BDSQLServer.COMANDO.setString(6, loja.getCategoria());
+            BDSQLServer.COMANDO.setInt(7, loja.getQtdFuncionarios());
+            BDSQLServer.COMANDO.setInt(8, loja.getCodigo());
 
             BDSQLServer.COMANDO.executeUpdate();
             BDSQLServer.COMANDO.commit();
@@ -155,7 +155,7 @@ public class Lojas {
             if (!resultado.first())
                 throw new Exception("Nao cadastrado");
 
-            loja = new Loja(codigo, resultado.getString("Nome"), resultado.getInt("Cep"), resultado.getInt("Numero"),
+            loja = new Loja(resultado.getString("Nome"), resultado.getInt("Cep"), resultado.getInt("Numero"),
                     resultado.getString("Complemento"), resultado.getString("Telefone"),
                     resultado.getString("Categoria"), resultado.getInt("qtdFuncionarios"));
         } catch (Exception ex) {
