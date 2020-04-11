@@ -71,16 +71,15 @@ public class Lojas {
             throw new Exception("Loja já cadastrada");
         try {
             String sql;
-            sql = "insert into Loja values(?, ?, ?, ?, ?, ?)";
+            sql = "insert into Loja values(?, ?, ?, ?, ?, ?, ?)";
             BDSQLServer.COMANDO.prepareStatement(sql);
-            BDSQLServer.COMANDO.setInt(1, loja.getCodigo());
-            BDSQLServer.COMANDO.setString(2, loja.getNome());
-            BDSQLServer.COMANDO.setInt(3, loja.getCep());
-            BDSQLServer.COMANDO.setInt(4, loja.getNumero());
-            BDSQLServer.COMANDO.setString(5, loja.getComplemento());
-            BDSQLServer.COMANDO.setString(6, loja.getTelefone());
-            BDSQLServer.COMANDO.setString(7, loja.getCategoria());
-            BDSQLServer.COMANDO.setInt(8, loja.getQtdFuncionarios());
+            BDSQLServer.COMANDO.setString(1, loja.getNome());
+            BDSQLServer.COMANDO.setInt(2, loja.getCep());
+            BDSQLServer.COMANDO.setInt(3, loja.getNumero());
+            BDSQLServer.COMANDO.setString(4, loja.getComplemento());
+            BDSQLServer.COMANDO.setString(5, loja.getTelefone());
+            BDSQLServer.COMANDO.setString(6, loja.getCategoria());
+            BDSQLServer.COMANDO.setInt(7, loja.getQtdFuncionarios());
 
             BDSQLServer.COMANDO.executeUpdate();
             BDSQLServer.COMANDO.commit();
@@ -160,7 +159,7 @@ public class Lojas {
                     resultado.getString("Complemento"), resultado.getString("Telefone"),
                     resultado.getString("Categoria"), resultado.getInt("qtdFuncionarios"));
         } catch (Exception ex) {
-            throw new Exception("Erro ao procurar Loja");
+            throw new Exception(ex.getMessage());
         }
         return loja;
     }

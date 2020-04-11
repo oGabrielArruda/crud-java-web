@@ -141,7 +141,7 @@ public class Loja implements Cloneable {
      * @throws Exception caso o cep seja inválido
      */
     public void setCep(int cep) throws Exception {
-        if (cep < 10000000 || cep > 1999999)
+        if (cep < 10000000 || cep > 19999999)
             throw new Exception("Cep inválido!");
         this.cep = cep;
     }
