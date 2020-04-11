@@ -125,6 +125,8 @@ public class Lojas {
      * @throws Exception se ocorrer algum erro durante a exclusão
      */
     public static void deletar(int codLoja) throws Exception {
+        if(!cadastrado(codLoja))
+            throw new Exception("Loja não cadastrada");
         try {
             String sql;
             sql = "delete from Loja where codLoja = ?";
@@ -155,7 +157,26 @@ public class Lojas {
             if (!resultado.first())
                 throw new Exception("Nao cadastrado");
 
-            loja = new Loja(resultado.getString("Nome"), resultado.getInt("Cep"), resultado.getInt("Numero"),
+            loja = new Loja(resultado.getInt("CodLoja"),resultado.getString("Nome"), resultado.getInt("Cep"), resultado.getInt("Numero"),
+                    resultado.getString("Complemento"), resultado.getString("Telefone"),
+                    resultado.getString("Categoria"), resultado.getInt("qtdFuncionarios"));
+        } catch (Exception ex) {
+            throw new Exception(ex.getMessage());
+        }
+        return loja;
+    }
+
+    public static Loja getLoja(String nome) throws Exception {
+        Loja loja = null;
+        try {
+            String sql = "select * from Loja where nome = ?";
+            BDSQLServer.COMANDO.prepareStatement(sql);
+            BDSQLServer.COMANDO.setString(1, nome);
+            MeuResultSet resultado = (MeuResultSet) BDSQLServer.COMANDO.executeQuery();
+            if (!resultado.first())
+                throw new Exception("Nao cadastrado");
+
+            loja = new Loja(resultado.getInt("CodLoja"),resultado.getString("Nome"), resultado.getInt("Cep"), resultado.getInt("Numero"),
                     resultado.getString("Complemento"), resultado.getString("Telefone"),
                     resultado.getString("Categoria"), resultado.getInt("qtdFuncionarios"));
         } catch (Exception ex) {

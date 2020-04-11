@@ -41,7 +41,8 @@ public class JanelaCrud extends JFrame{
     private JTextField telefoneTextField;
     private JTextField txtTelefone;
     private JTextField cepTextField;
-
+    private JButton limparButton;
+    private boolean cepValido = false;
     public JanelaCrud()
     {
         add(rootPanel);
@@ -52,11 +53,17 @@ public class JanelaCrud extends JFrame{
         procurarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Loja loja = null;
                 try
                 {
-                    Loja loja = procurarLoja(Integer.parseInt(txtCodigo.getText()));
-                    enableAlterarDeletar();
+                    if(!txtCodigo.getText().trim().equals(""))
+                        loja = procurarLoja(Integer.parseInt(txtCodigo.getText()));
+                    else
+                        loja = procurarLoja(txtNome.getText());
+                    enableAlterarDeletar(true);
                     exibirLoja(loja);
+                    txtCodigo.setEditable(false);
+                    inserirButton.setEnabled(false);
                 }
                 catch (Exception ex)
                 {
@@ -64,6 +71,49 @@ public class JanelaCrud extends JFrame{
                 }
             }
         });
+        inserirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try
+                {
+                    inserirLoja();
+                    JOptionPane.showMessageDialog(rootPanel, "Inserido com sucesso!");
+                    enableAlterarDeletar(true);
+                    txtCodigo.setEditable(false);
+                    inserirButton.setEnabled(false);
+                }
+                catch (Exception ex){
+                    JOptionPane.showMessageDialog(rootPanel, ex.getMessage());
+                }
+            }
+        });
+
+        alterarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try
+                {
+                    alterarLoja(Integer.parseInt(txtCodigo.getText()));
+                    JOptionPane.showMessageDialog(rootPanel, "Alterado com sucesso");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(rootPanel, ex.getMessage());
+                }
+            }
+        });
+
+        deletarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    deletarLoja();
+                    JOptionPane.showMessageDialog(rootPanel, "Loja deletada");
+                    limparCampos();
+                } catch (Exception ex){
+                    JOptionPane.showMessageDialog(rootPanel, ex.getMessage());
+                }
+            }
+        });
+
         txtCep.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -87,30 +137,14 @@ public class JanelaCrud extends JFrame{
             }
         });
 
-        inserirButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try
-                {
-                    inserirLoja();
-                    JOptionPane.showMessageDialog(rootPanel, "Inserido com sucesso!");
-                }
-                catch (Exception ex){
-                    JOptionPane.showMessageDialog(rootPanel, ex.getMessage());
-                }
-            }
-        });
 
-        alterarButton.addActionListener(new ActionListener() {
+        limparButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try
-                {
-                    alterarLoja(Integer.parseInt(txtCodigo.getText()));
-                    JOptionPane.showMessageDialog(rootPanel, "Alterado com sucesso");
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(rootPanel, ex.getMessage());
-                }
+                limparCampos();
+                txtCodigo.setEditable(true);
+                inserirButton.setEnabled(true);
+                enableAlterarDeletar(false);
             }
         });
     }
@@ -121,8 +155,27 @@ public class JanelaCrud extends JFrame{
                 txtTelefone.getText(), txtCategoria.getText(), Integer.parseInt(txtQtdFunc.getText()));
     }
 
+    private  void limparCampos()
+    {
+        txtCodigo.setText(null);
+        txtNome.setText(null);
+        txtCep.setText(null);
+        txtNumero.setText(null);
+        txtComplemento.setText(null);
+        txtTelefone.setText(null);
+        txtCategoria.setText(null);
+        txtQtdFunc.setText(null);
+        limparEndereco();
+    }
+    private void deletarLoja() throws Exception
+    {
+        Lojas.deletar(Integer.parseInt(txtCodigo.getText()));
+    }
+
     private void alterarLoja(int cod) throws Exception
     {
+        if(!this.cepValido)
+            throw new Exception("Cep inválido");
         Loja loja = newLojaInstance();
         loja.setCodigo(cod);
         Lojas.alterar(loja);
@@ -130,8 +183,12 @@ public class JanelaCrud extends JFrame{
 
     private void inserirLoja() throws Exception
     {
+        if(!this.cepValido)
+            throw new Exception("Cep inválido");
         Loja loja = newLojaInstance();
         Lojas.incluir(loja);
+        Loja lojaExb = procurarLoja(loja.getNome());
+        exibirLoja(lojaExb);
     }
 
     private void fetchCep(String cep)
@@ -139,10 +196,12 @@ public class JanelaCrud extends JFrame{
         try {
             Logradouro log = (Logradouro) ClienteWS.getObjeto(Logradouro.class, "http://api.postmon.com.br/v1/cep", cep);
             alterarTxtEndereco(log);
+            this.cepValido = true;
         }
         catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPanel, "Cep inválido");
-            txtCep.setText("");
+            limparEndereco();
+            this.cepValido = false;
         }
 
     }
@@ -155,18 +214,32 @@ public class JanelaCrud extends JFrame{
         txtEstado.setText(log.getEstado());
     }
 
+    private void limparEndereco()
+    {
+        txtRua.setText(null);
+        txtBairro.setText(null);
+        txtCidade.setText(null);
+        txtEstado.setText(null);
+    }
+
     private Loja procurarLoja(int codigo) throws Exception
     {
         return Lojas.getLoja(codigo);
     }
-    private void enableAlterarDeletar()
+
+    private Loja procurarLoja(String nome) throws Exception
     {
-        alterarButton.setEnabled(true);
-        deletarButton.setEnabled(true);
+        return Lojas.getLoja(nome);
+    }
+    private void enableAlterarDeletar(boolean enable)
+    {
+        alterarButton.setEnabled(enable);
+        deletarButton.setEnabled(enable);
     }
 
     private void exibirLoja(Loja loja)
     {
+        txtCodigo.setText(loja.getCodigo()+"");
         txtNome.setText(loja.getNome());
         txtCep.setText(loja.getCep() + "");
         txtNumero.setText(loja.getNumero() + "");

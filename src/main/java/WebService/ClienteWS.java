@@ -10,7 +10,7 @@ import org.codehaus.jackson.map.MappingJsonFactory;
 import org.codehaus.jackson.map.ObjectMapper;
 public class ClienteWS
 {
-    public static Object getObjeto(Class tipoClasse, String urlWebService, String... parametros){
+    public static Object getObjeto(Class tipoClasse, String urlWebService, String... parametros) throws Exception{
         Object objRetorno = null;
         try {
             for(String param:parametros)
